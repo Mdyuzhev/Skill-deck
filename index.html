@@ -2,12 +2,20 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>
+  (function () {
+    var q = window.matchMedia("(max-width: 900px)");
+    var apply = function () { document.documentElement.classList.toggle("is-mobile", q.matches); };
+    apply();
+    if (q.addEventListener) q.addEventListener("change", apply);
+  })();
+</script>
 <title>Скиллы для ИИ-агентов — лекция для бэк-офиса</title>
 <meta name="description" content="Часовая лекция для бэк-офиса: что такое скилл для ИИ-агента и как собрать его под кадровые, документные и финансовые задачи." />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="fonts.css" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="fonts.css?v=61ea81e9aa" />
+<link rel="stylesheet" href="styles.css?v=61ea81e9aa" />
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span id="bar"></span></div>
@@ -1023,6 +1031,6 @@
 </div>
 <div class="notes-panel" id="notes-panel" hidden></div>
 <p class="sr" id="live" aria-live="polite"></p>
-<script src="deck.js"></script>
+<script src="deck.js?v=61ea81e9aa"></script>
 </body>
 </html>

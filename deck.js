@@ -45,7 +45,7 @@
 
   const coarse = () => window.matchMedia("(pointer: coarse)").matches;
   const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mobileQuery = window.matchMedia("(max-width: 860px)");
+  const mobileQuery = window.matchMedia("(max-width: 900px)");
 
   function fragMax(slide) {
     let max = 0;
@@ -340,24 +340,39 @@
 
   document.addEventListener("keydown", onKey);
 
+  function beginGesture(x, y, target) {
+    if (interactive(target)) { pointer = null; return; }
+    pointer = { x: x, y: y, used: false };
+  }
+  /* passive: these listeners must not be able to cancel a scroll. */
   document.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0 || interactive(e.target)) { pointer = null; return; }
-    pointer = { x: e.clientX, y: e.clientY, t: Date.now() };
-  });
+    if (e.button !== 0) return;
+    beginGesture(e.clientX, e.clientY, e.target);
+  }, { passive: true });
+  document.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) { pointer = null; return; }
+    const t = e.touches[0];
+    beginGesture(t.clientX, t.clientY, e.target);
+  }, { passive: true });
 
-  document.addEventListener("pointerup", (e) => {
-    if (!pointer) return;
-    const dx = e.clientX - pointer.x;
-    const dy = e.clientY - pointer.y;
+  function endGesture(x, y) {
+    if (!pointer || pointer.used) return;
+    pointer.used = true;
+    const dx = x - pointer.x;
+    const dy = y - pointer.y;
     const moved = Math.abs(dx) > 12 || Math.abs(dy) > 12;
-    pointer = null;
-    /* Any real drag must not become a click. A vertical drag is a scroll:
-       do not turn the slide and do not preventDefault (no listener here). */
+    /* A drag is not a click. Vertical movement is the browser's scroll. */
     if (moved) swallowClick = true;
     if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
     if (dx < 0) next();
     else prev();
-  });
+  }
+  document.addEventListener("pointerup", (e) => endGesture(e.clientX, e.clientY), { passive: true });
+  document.addEventListener("touchend", (e) => {
+    const t = e.changedTouches && e.changedTouches[0];
+    if (!t) return;
+    endGesture(t.clientX, t.clientY);
+  }, { passive: true });
 
   document.addEventListener("click", (e) => {
     if (swallowClick) { swallowClick = false; return; }

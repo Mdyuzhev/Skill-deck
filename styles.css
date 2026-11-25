@@ -891,36 +891,51 @@ section[data-deck-active] .stamp { animation: stamp .45s cubic-bezier(.2, .8, .2
 
 .help[hidden], .notes-panel[hidden] { display: none; }
 
-@media (max-width: 860px) {
-  /* The document itself scrolls. A nested overflow:auto on a section that
-     grows with its content never becomes a scrollport, and overflow:hidden
-     on the body then clips the slide with no way to pan. Vertical pans stay
-     native (momentum, no preventDefault). Horizontal swipes are not a pan. */
+@media (max-width: 900px) {
+  /* iOS Chrome is WebKit. overflow-x:hidden (or overflow-y:auto) on html/body
+     makes the root a scroll container that does not pan, so the finger does
+     nothing. Leave the document in normal flow: the visual viewport scrolls,
+     vertical gestures are not captured, there is no scaled canvas. */
   html, body {
-    height: auto;
-    min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
-    overscroll-behavior-x: none;
+    position: static !important;
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    touch-action: auto !important;
   }
-  deck-stage { touch-action: pan-y; }
+  deck-stage {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    overflow: visible !important;
+    touch-action: auto !important;
+  }
   deck-stage > section {
-    position: relative;
-    inset: auto;
-    width: 100%;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
     min-height: 100dvh;
-    height: auto;
-    overflow: visible;
-    touch-action: pan-y;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    touch-action: auto !important;
     padding: calc(56px + env(safe-area-inset-top, 0px)) 18px calc(108px + env(safe-area-inset-bottom, 0px));
     display: none;
   }
   deck-stage > section[data-deck-active] {
-    display: flex;
-    animation: none;
-    transform: none;
+    display: flex !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   deck-stage > section.leave { display: none; }
   .title { font-size: 30px; }
