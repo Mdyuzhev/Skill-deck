@@ -126,8 +126,10 @@
       stage.style.left = "auto";
       stage.style.top = "auto";
       stage.style.position = "relative";
+      stage.style.overflow = "visible";
       return;
     }
+    stage.style.overflow = "";
     const scale = Math.min(window.innerWidth / W, window.innerHeight / H);
     stage.style.position = "absolute";
     stage.style.width = W + "px";
@@ -218,10 +220,21 @@
     updateHud(slide);
     typeWithin(slide);
     flash();
-    if (mobileQuery.matches) {
-      const scroller = slide;
-      scroller.scrollTop = 0;
-    }
+    resetMobileScroll();
+  }
+
+  function resetMobileScroll() {
+    if (!mobileQuery.matches) return;
+    const slide = slides[index];
+    if (slide) slide.scrollTop = 0;
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
   }
 
   function next() {
@@ -336,9 +349,12 @@
     if (!pointer) return;
     const dx = e.clientX - pointer.x;
     const dy = e.clientY - pointer.y;
+    const moved = Math.abs(dx) > 12 || Math.abs(dy) > 12;
     pointer = null;
+    /* Any real drag must not become a click. A vertical drag is a scroll:
+       do not turn the slide and do not preventDefault (no listener here). */
+    if (moved) swallowClick = true;
     if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
-    swallowClick = true;
     if (dx < 0) next();
     else prev();
   });

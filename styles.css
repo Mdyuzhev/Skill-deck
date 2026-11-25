@@ -892,15 +892,29 @@ section[data-deck-active] .stamp { animation: stamp .45s cubic-bezier(.2, .8, .2
 .help[hidden], .notes-panel[hidden] { display: none; }
 
 @media (max-width: 860px) {
-  body { overflow: hidden; }
+  /* The document itself scrolls. A nested overflow:auto on a section that
+     grows with its content never becomes a scrollport, and overflow:hidden
+     on the body then clips the slide with no way to pan. Vertical pans stay
+     native (momentum, no preventDefault). Horizontal swipes are not a pan. */
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
+  }
+  deck-stage { touch-action: pan-y; }
   deck-stage > section {
     position: relative;
     inset: auto;
     width: 100%;
     min-height: 100dvh;
     height: auto;
-    overflow: auto;
-    padding: 64px 18px 120px;
+    overflow: visible;
+    touch-action: pan-y;
+    padding: calc(56px + env(safe-area-inset-top, 0px)) 18px calc(108px + env(safe-area-inset-bottom, 0px));
     display: none;
   }
   deck-stage > section[data-deck-active] {
@@ -931,7 +945,8 @@ section[data-deck-active] .stamp { animation: stamp .45s cubic-bezier(.2, .8, .2
   .grow { display: block; }
   .bar { grid-template-columns: 1fr auto; }
   .bar i { grid-column: 1 / -1; }
-  deck-stage[data-pending]::after { right: 16px; bottom: 78px; }
+  deck-stage[data-pending]::after { right: 16px; bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  .hud { bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
   .pips { display: none; }
   .file .body { font-size: 13px; }
   table.grid { font-size: 14px; }
