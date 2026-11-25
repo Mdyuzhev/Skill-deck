@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Скиллы для ИИ-агентов — лекция для бэк-офиса</title>
+<meta name="description" content="Часовая лекция для бэк-офиса: что такое скилл для ИИ-агента и как собрать его под кадровые, документные и финансовые задачи." />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+<div class="pips" aria-hidden="true">
+  <i class="part-pip" data-part="start"></i>
+  <i class="part-pip" data-part="anatomy"></i>
+  <i class="part-pip" data-part="hr"></i>
+  <i class="part-pip" data-part="docs"></i>
+  <i class="part-pip" data-part="money"></i>
+  <i class="part-pip" data-part="craft"></i>
+  <i class="part-pip" data-part="end"></i>
+</div>
+
+<deck-stage>
+<!-- 1 -->
+<section class="cover" data-part="start" data-label="Обложка">
+  <div class="cover-grid">
+    <div>
+      <p class="eyebrow r">Лекция · около часа · бэк-офис</p>
+      <h1 class="r" style="--i:1">Скилл — <em>регламент</em>, который агент открывает сам</h1>
+      <p class="lead r" style="--i:2">Как перестать каждый раз заново объяснять одну и ту же работу и собрать папку, по которой агент одинаково ведёт кадры, документы и деньги.</p>
+      <div class="brand r" style="--i:3">Ростелеком <span>для тех, кто уже пробовал агентов и не пишет код</span></div>
+    </div>
+    <div class="folder-hero r" style="--i:2">
+      <div class="tab">папка скилла · инструкция внутри</div>
+      <div class="sheet s1" style="--i:1">Когда применять <small>вкладка на папке</small></div>
+      <div class="sheet s2" style="--i:2">Шаги <small>как для стажёра</small></div>
+      <div class="sheet s3" style="--i:3">Шаблон <small>пустая форма</small></div>
+      <div class="sheet s4" style="--i:4">Пример <small>готовое блюдо</small></div>
+    </div>
+  </div>
+  <p class="notes">Представьтесь, скажите, что час без кода и без привязки к одной программе. Скилл — общая идея: папка с инструкцией, которую агент подгружает, когда задача подходит.</p>
+</section>
+
+<!-- 2 -->
+<section data-part="start" data-label="Договор на час">
+  <p class="kicker r">Старт <span class="pt">как устроен час</span></p>
+  <h2 class="title r" style="--i:1">Вы уже разговаривали с агентом. Сегодня дадим ему должностные инструкции</h2>
+  <div class="mid grid2">
+    <div class="card r" style="--i:2">
+      <div class="ico">Для кого</div>
+      <h3>Не программисты</h3>
+      <p>Каждый в зале уже пробовал поставить агенту задачу обычными словами. Код, среда разработки и название конкретной программы нам не понадобятся.</p>
+    </div>
+    <div class="card r" style="--i:3">
+      <div class="ico">Что заберёте</div>
+      <h3>Папку, а не впечатление</h3>
+      <p>Понятный каркас скилла, живые примеры на ваших задачах, чек-лист и файлы, которые можно скачать и заполнить под свою работу.</p>
+    </div>
+    <div class="card r" style="--i:4">
+      <div class="ico">Как листать</div>
+      <h3>Как колоду, не как сайт</h3>
+      <p>Стрелки и пробел, клик по краю экрана, свайп. Номер слайда живёт в адресе: <strong>#12</strong>. Клавиша <strong>?</strong> — шпаргалка по клавишам.</p>
+    </div>
+    <div class="card r" style="--i:5">
+      <div class="ico">Договор</div>
+      <h3>Агент готовит, человек сдаёт</h3>
+      <p>Скилл не подписывает приказ, не отправляет деньги и не отказывает кандидату. Он собирает черновик, который вы проверяете.</p>
+    </div>
+  </div>
+  <p class="notes">Покажите # в адресе и один раз нажмите стрелку, чтобы зал увидел, как слайд приезжает. Договор «агент готовит, человек сдаёт» повторится в конце.</p>
+</section>
+
+<!-- 3 -->
+<section data-part="start" data-label="Что такое агент">
+  <p class="kicker r">Старт <span class="pt">агент</span></p>
+  <h2 class="title r" style="--i:1">Агент — это не поиск. Это стажёр, которому можно дать папку</h2>
+  <div class="mid grid3">
+    <article class="card r" style="--i:2">
+      <div class="ico">01</div>
+      <h3>Слышит задачу</h3>
+      <p>Вы пишете обычным языком: «разложи эти резюме по вакансии», «собери служебку», «сверь акт».</p>
+    </article>
+    <article class="card r" style="--i:3">
+      <div class="ico">02</div>
+      <h3>Сам выбирает шаг</h3>
+      <p>Не отвечает одной фразой из памяти. Смотрит, чего не хватает, открывает файл, заполняет форму, показывает, где сомневается.</p>
+    </article>
+    <article class="card r" style="--i:4">
+      <div class="ico">03</div>
+      <h3>Делает тем, что вы дали</h3>
+      <p>Шаблоны, выгрузки, регламенты, прошлые примеры. Нет папки — импровизирует. Папка есть — работает по ней.</p>
+    </article>
+  </div>
+  <p class="note r" style="--i:5">Энергичный стажёр в первый день без папки «как у нас принято» сделает по-своему. И каждый раз немного иначе.</p>
+  <p class="notes">Не уходите в устройство моделей. Один образ: стажёр с энергией и без регламента. Скилл — эта папка.</p>
+</section>
+
+<!-- 4 -->
+<section data-part="start" data-label="Промпт и скилл">
+  <p class="kicker r">Старт <span class="pt">разница</span></p>
+  <h2 class="title r" style="--i:1">Промпт сгорает в чате. Скилл остаётся на полке</h2>
+  <div class="mid grid2">
+    <article class="card bad r" style="--i:2">
+      <div class="tag bad">Разовый промпт</div>
+      <h3>Устное поручение в коридоре</h3>
+      <ul class="clean">
+        <li>Написали один раз — уехало в историю чата</li>
+        <li>Коллега этот текст не видит</li>
+        <li>Завтра вы сформулируете иначе, и результат другой</li>
+        <li>Удачную формулировку трудно найти через месяц</li>
+      </ul>
+    </article>
+    <article class="card good r" style="--i:3">
+      <div class="tag good">Скилл</div>
+      <h3>Должностная инструкция на общей полке</h3>
+      <ul class="clean">
+        <li>Одна версия на всю команду</li>
+        <li>Агент берёт её сам, когда задача подходит</li>
+        <li>Поправили файл — со следующего раза работают все</li>
+        <li>Можно отдать новичку вместе с папкой примеров</li>
+      </ul>
+    </article>
+  </div>
+  <p class="note r" style="--i:4">Промпт по-прежнему нужен: это сама задача. «Вот три резюме». Скилл — это <strong>как у нас принято её делать</strong>.</p>
+  <p class="notes">Жест: промпт — поручение, скилл — регламент. Не противопоставляйте их как «промпты больше не нужны».</p>
+</section>
+
+<!-- 5 -->
+<section data-part="start" data-label="Три аналогии">
+  <p class="kicker r">Старт <span class="pt">аналогии</span></p>
+  <h2 class="title r" style="--i:1">Рецепт, регламент и чек-лист. Скилл — все три сразу</h2>
+  <div class="mid grid3 analogies">
+    <article class="card r" style="--i:2">
+      <div class="ico">Рецепт</div>
+      <h3>Что класть и в каком порядке</h3>
+      <p>Ингредиенты — это входы. Шаги — что сделать. Фото блюда — пример. «Масло не заменять маргарином» — ограничение.</p>
+    </article>
+    <article class="card r" style="--i:3">
+      <div class="ico">Регламент</div>
+      <h3>Когда это ваша задача</h3>
+      <p>На корешке папки написано, какие дела сюда относятся. Что согласовать с человеком. Чего не решать самому.</p>
+    </article>
+    <article class="card r" style="--i:4">
+      <div class="ico">Чек-лист</div>
+      <h3>Одинаково каждый раз</h3>
+      <p>Как закрытие кассы: пропущенный пункт виден. Не «сделай хорошо», а список, по которому можно пройти пальцем.</p>
+    </article>
+  </div>
+  <p class="note r" style="--i:5">Адресат не новый сотрудник, а агент. Поэтому пишем короче, чем положение на двадцать страниц, но конкретнее, чем «будь внимателен».</p>
+  <p class="notes">Три карточки можно пройти вслух по одной. Связка внизу — мост к анатомии.</p>
+</section>
+
+<!-- 6 -->
+<section data-part="start" data-label="Зачем бэк-офису">
+  <p class="kicker r">Старт <span class="pt">зачем</span></p>
+  <h2 class="title r" style="--i:1">Бэк-офис живёт повторами. Скилл как раз про повтор</h2>
+  <div class="mid stack">
+    <div class="why r" style="--i:1"><span class="n">01</span><div><strong>Одинаковый результат</strong> у разных людей и в разные недели, а не «как агент сегодня выспался».</div></div>
+    <div class="why r" style="--i:2"><span class="n">02</span><div><strong>Новичок не собирает промпт с нуля.</strong> Он кладёт свои файлы в уже описанную работу.</div></div>
+    <div class="why r" style="--i:3"><span class="n">03</span><div><strong>Меньше выдумок.</strong> В скилле прямо написано, чего не додумывать: стаж, пункт договора, сумму.</div></div>
+    <div class="why r" style="--i:4"><span class="n">04</span><div><strong>Улучшение — это правка файла,</strong> а не надежда, что все запомнят удачный чат.</div></div>
+    <div class="why r" style="--i:5"><span class="n">05</span><div><strong>Можно отдать папкой.</strong> Коллега открывает ту же инструкцию, а не пересказывает вашу переписку.</div></div>
+  </div>
+  <p class="notes">Примеры из зала не собирайте долго. Достаточно кивнуть: резюме, служебки, акты — это и есть следующие части.</p>
+</section>
+
+<!-- 7 -->
+<section data-part="start" data-label="Как агент открывает скилл">
+  <p class="kicker r">Старт <span class="pt">схема</span></p>
+  <h2 class="title r" style="--i:1">Агент не помнит регламент наизусть. Он находит папку и подгружает её</h2>
+  <div class="mid pipeline">
+    <article class="stepcard r" style="--i:1">
+      <em>01 · задача</em>
+      <h3>Обычная просьба</h3>
+      <p>«Отсей резюме по вакансии бухгалтера»</p>
+    </article>
+    <div class="track r" style="--i:2" aria-hidden="true"><i></i></div>
+    <article class="stepcard r" style="--i:3">
+      <em>02 · агент</em>
+      <h3>Смотрит корешки</h3>
+      <p>Сравнивает просьбу с полем «когда применять», а не со всем текстом сразу.</p>
+    </article>
+    <div class="track r" style="--i:4" aria-hidden="true"><i></i></div>
+    <div class="shelf r" style="--i:5">
+      <div class="folder">Отпуска<small>когда: заявление на отпуск</small></div>
+      <div class="folder hot">Скрининг<small>когда: резюме и требования вакансии</small></div>
+      <div class="folder">Акт сверки<small>когда: наш реестр и акт контрагента</small></div>
+    </div>
+    <div class="track r" style="--i:6" aria-hidden="true"><i></i></div>
+    <article class="stepcard hot r" style="--i:7">
+      <em>03 · в работу</em>
+      <h3>Папка целиком</h3>
+      <p>Шаги, шаблон, пример и запреты. Потом уже ваши файлы.</p>
+    </article>
+  </div>
+  <p class="note r" style="--i:8">Имя файла бывает разным. Часто инструкцию кладут в <strong>SKILL.md</strong> — агенту важнее поля внутри, чем название.</p>
+  <p class="notes">Проговорите схему слева направо, пока бежит подсветка папки. SKILL.md — пример формата, не тема лекции. Одна фраза и дальше.</p>
+</section>
+
+<!-- 8 -->
+<section data-part="start" data-label="Маршрут лекции">
+  <p class="kicker r">Старт <span class="pt">маршрут</span></p>
+  <h2 class="title r" style="--i:1">Дальше — устройство, три рабочие полки и как собрать свою</h2>
+  <ol class="route mid">
+    <li class="r" style="--i:1"><b>01</b><span>Из чего состоит скилл и без какого поля он не работает</span></li>
+    <li class="r" style="--i:2"><b>02</b><span>Кадры: резюме, приглашение, таблица кандидатов</span></li>
+    <li class="r" style="--i:3"><b>03</b><span>Документы: служебка, приказ, регламент, договор</span></li>
+    <li class="r" style="--i:4"><b>04</b><span>Деньги: акты, счета, аванс, первичка, сводка</span></li>
+    <li class="r" style="--i:5"><b>05</b><span>Как написать свой, проверить и не утащить лишние данные</span></li>
+    <li class="r" style="--i:6"><b>06</b><span>Чек-лист, шаблоны и страница, которую можно распечатать</span></li>
+  </ol>
+  <p class="notes">Не обещайте минуты по блокам. Скажите: примеры устроены одинаково — было / стало, кусок скилла, диалог.</p>
+</section>
+
+<!-- 9 -->
+<section class="divider" data-part="anatomy" data-label="Анатомия">
+  <div class="div-num">01</div>
+  <p class="kicker r">Часть 01 <span class="pt">анатомия</span></p>
+  <h2 class="title r" style="--i:1">Из чего собран скилл</h2>
+  <p class="lead r" style="--i:2">Шесть вещей, без которых агент снова начинает импровизировать. Каждую можно показать коллеге на одном экране.</p>
+  <div class="chips r" style="--i:3"><span>Когда</span><span>Шаги</span><span>Шаблон</span><span>Пример</span><span>Входы и выход</span><span>Стоп-линии</span></div>
+  <p class="notes">Разделитель. Назовите шесть слов и скажите, что сейчас разберём по одному, а потом увидите их на живых задачах.</p>
+</section>
+
+<!-- 10 -->
+<section data-part="anatomy" data-label="Папка, а не абзац">
+  <p class="kicker r">Анатомия <span class="pt">папка</span></p>
+  <h2 class="title r" style="--i:1">Скилл — это папка. Не абзац, который вы помните</h2>
+  <div class="mid grid2">
+    <div class="file scan r" style="--i:2">
+      <div class="fh"><span class="dots"><i></i><i></i><i></i></span>скрининг-резюме/</div>
+      <div class="body">
+        <div><span class="s">SKILL.md</span> <span class="c">← когда, шаги, запреты</span></div>
+        <div><span class="s">template.md</span> <span class="c">← пустая таблица</span></div>
+        <div><span class="s">example.md</span> <span class="c">← один разобранный случай</span></div>
+        <div class="c" style="margin-top:10px">Рядом могут лежать другие папки:</div>
+        <div>приглашение-на-интервью/</div>
+        <div>сверка-актов/</div>
+        <div>служебная-записка/</div>
+      </div>
+    </div>
+    <div class="stack">
+      <article class="card r" style="--i:3">
+        <h3>Одна задача — одна папка</h3>
+        <p>«Помоги с документами» — это полка, а не скилл. Скрининг, приглашение и сравнение кандидатов — три папки, даже если ими пользуется один человек.</p>
+      </article>
+      <article class="card r" style="--i:4">
+        <h3>Лежит там, где найдут оба</h3>
+        <p>И человек, и агент. Общая папка команды, а не удачный черновик в личном чате. Поправили файл — обновилась договорённость.</p>
+      </article>
+      <article class="card r" style="--i:5">
+        <h3>Формат спокойно переносится</h3>
+        <p>Где-то файл называется SKILL.md, где-то иначе. Смысл один: текст, который агент умеет открыть по совпадению задачи.</p>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Нарисуйте в воздухе корешок папки. Подчеркните: пять дел в одном файле — частая поломка, к ней вернёмся в ошибках.</p>
+</section>
+
+<!-- 11 -->
+<section data-part="anatomy" data-label="Когда применять">
+  <p class="kicker r">Анатомия <span class="pt">когда применять</span></p>
+  <h2 class="title r" style="--i:1">Самое важное поле — не «что делать», а «когда открывать»</h2>
+  <p class="lead r" style="--i:1">Агент выбирает папку по этому абзацу. Если там написано «разное», он откроет её невпопад или не откроет никогда.</p>
+  <div class="mid grid2">
+    <article class="card bad r shake" style="--i:2">
+      <div class="tag bad">Так не пишут</div>
+      <h3>«Помоги с работой»</h3>
+      <p>Подходит к любой просьбе и поэтому не помогает выбрать. Агент либо хватает эту папку всегда, либо игнорирует её.</p>
+    </article>
+    <article class="card good r" style="--i:3">
+      <div class="tag good">Так пишут</div>
+      <h3>Три конкретных входа</h3>
+      <ul class="clean">
+        <li>Есть текст вакансии или список требований</li>
+        <li>Есть хотя бы одно резюме</li>
+        <li>Просят отобрать или сравнить, а не «просто глянуть»</li>
+      </ul>
+    </article>
+  </div>
+  <p class="note r" style="--i:4">Хорошая проверка: коллега по абзацу «когда» угадывает задачу, не открывая остальное. Не угадал — перепишите корешок.</p>
+  <p class="notes">Это главный слайд части. Задержитесь. Аналогия: подпись на корешке скоросшивателя, а не оглавление внутри.</p>
+</section>
+
+<!-- 12 -->
+<section data-part="anatomy" data-label="Шаги">
+  <p class="kicker r">Анатомия <span class="pt">шаги</span></p>
+  <h2 class="title r" style="--i:1">Шаги пишут так, как объяснили бы стажёру в первый день</h2>
+  <div class="mid grid2">
+    <ol class="clean stack">
+      <li class="card r" style="--i:1"><strong>Выпиши требования</strong> отдельным списком. Если список пришлось додумать — сначала покажи его человеку.</li>
+      <li class="card r" style="--i:2"><strong>Иди по одному требованию.</strong> Не «оцени кандидата в целом».</li>
+      <li class="card r" style="--i:3"><strong>Ставь «есть»</strong>, только если в резюме это сказано прямо. Иначе — «не видно».</li>
+      <li class="card r" style="--i:4"><strong>Статус в конце</strong>, из короткого списка: звать, уточнить, не звать. Свой статус не выдумывай.</li>
+    </ol>
+    <article class="card r" style="--i:5">
+      <div class="ico">Какой шаг хороший</div>
+      <h3>Его можно пропустить — и это заметно</h3>
+      <p>Плохо: «будь объективен и смотри на суть». Хорошо: «если в резюме нет цитаты, не пиши, что навыка нет. Пиши „не видно“».</p>
+      <p style="margin-top:14px">Порядок тоже часть инструкции. Сначала критерии, потом люди. Иначе агент сравнивает характер, а не требования.</p>
+    </article>
+  </div>
+  <p class="notes">Прочитайте вслух шаг 3. Это защита от вежливых выдумок, она повторится во всех примерах.</p>
+</section>
+
+<!-- 13 -->
+<section data-part="anatomy" data-label="Шаблон и пример">
+  <p class="kicker r">Анатомия <span class="pt">форма и вкус</span></p>
+  <h2 class="title r" style="--i:1">Шаблон — это форма. Пример — фото готового блюда</h2>
+  <div class="mid grid2">
+    <article class="paper r" style="--i:2">
+      <div class="tag">Шаблон · пусто</div>
+      <h3>Таблица, которую только заполняют</h3>
+      <table class="grid">
+        <thead><tr><th>Кандидат</th><th>Требование</th><th>Цитата</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr><td>…</td><td>…</td><td>…</td><td>звать / уточнить / не звать</td></tr>
+          <tr><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px">Форма держит ответ. Без неё агент напишет эссе на полстраницы.</p>
+    </article>
+    <article class="paper r" style="--i:3">
+      <div class="tag good">Пример · заполнен</div>
+      <h3>Один случай, на который можно опереться</h3>
+      <table class="grid">
+        <thead><tr><th>Кандидат</th><th>Требование</th><th>Цитата</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr><td>А.</td><td>Первичка от 2 лет</td><td>«первичные документы, 4 года»</td><td><span class="st go">звать</span></td></tr>
+          <tr><td>Б.</td><td>1С</td><td>в тексте нет</td><td><span class="st ask">уточнить</span></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px">Пример учит сильнее определения. Агент копирует форму решения, а не биографию А.</p>
+    </article>
+  </div>
+  <p class="notes">Имена вымышленные, так и скажите. Подчеркните: в примере виден и удачный, и пограничный случай.</p>
+</section>
+
+<!-- 14 -->
+<section data-part="anatomy" data-label="Входы, выходы, стоп">
+  <p class="kicker r">Анатомия <span class="pt">границы</span></p>
+  <h2 class="title r" style="--i:1">Три вопроса, которые экономят переписку</h2>
+  <div class="mid grid3">
+    <article class="card r" style="--i:1">
+      <div class="ico">Входы</div>
+      <h3>Что должно лежать на столе</h3>
+      <p>Вакансия, резюме, акт, выгрузка. И чего в ответе быть не должно: телефон, паспорт, лишняя сумма, если задаче она не нужна.</p>
+    </article>
+    <article class="card r" style="--i:2">
+      <div class="ico">Выход</div>
+      <h3>Как выглядит «готово»</h3>
+      <p>Таблица на одну страницу, служебка по полям, список расхождений. Не «развёрнутый анализ», а предмет, который можно переслать.</p>
+    </article>
+    <article class="card r" style="--i:3">
+      <div class="ico">Стоп-линии</div>
+      <h3>Где звать человека</h3>
+      <p>Нет критериев. Просьба отправить письмо наружу. Платёж. Сомнение, которое нельзя закрыть цитатой из документа.</p>
+    </article>
+  </div>
+  <p class="note r" style="--i:4">Стоп-линия — это не недоверие к агенту. Это место, где ошибка стоит дороже, чем лишние пять минут вашей проверки.</p>
+  <p class="notes">Свяжите с договором со второго слайда. Выход должен быть таким, чтобы его было легко проверить глазами.</p>
+</section>
+
+<!-- 15 -->
+<section data-part="anatomy" data-label="Скелет скилла">
+  <p class="kicker r">Анатомия <span class="pt">целиком</span></p>
+  <h2 class="title r" style="--i:1">На одном экране — весь каркас</h2>
+  <div class="mid">
+    <div class="file scan r" style="--i:2">
+      <div class="fh"><span class="dots"><i></i><i></i><i></i></span>SKILL.md · каркас, не про одну программу</div>
+      <div class="body">
+        <div><span class="k"># Скрининг резюме</span></div>
+        <div class="c">## Когда применять</div>
+        <div>Есть вакансия и хотя бы одно резюме. Просят отобрать, не «просто посмотреть».</div>
+        <div class="c">## Когда не применять</div>
+        <div>Нет требований. Просят оффер, зарплату или письмо-отказ.</div>
+        <div class="c">## Шаги</div>
+        <div>1. Выпиши обязательные требования · 2. Ищи прямую цитату · 3. Нет цитаты — «не видно»</div>
+        <div class="c">## Шаблон</div>
+        <div>Кандидат | Требование | Цитата | Статус</div>
+        <div class="c">## Пример</div>
+        <div>А. — «первичка, 4 года», 1С есть — <span class="ok">звать</span></div>
+        <div class="c">## Не делать</div>
+        <div><span class="no">✗</span> не выдумывать стаж · <span class="no">✗</span> не писать кандидату · <span class="no">✗</span> не тащить телефон в ответ</div>
+      </div>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">Пустой файл той же формы лежит в раздатке: <strong>templates/skeleton.md</strong></p>
+  <p class="notes">Не читайте файл целиком. Пройдите пальцем по заголовкам: когда, когда нет, шаги, шаблон, пример, не делать.</p>
+</section>
+
+<!-- 16 -->
+<section data-part="anatomy" data-label="Сырой и рабочий">
+  <p class="kicker r">Анатомия <span class="pt">до и после</span></p>
+  <h2 class="title r" style="--i:1">Один и тот же замысел. Разная папка</h2>
+  <div class="mid grid2">
+    <div class="file r" style="--i:2">
+      <div class="fh"><span class="dots"><i></i><i></i><i></i></span>черновик, который не работает</div>
+      <div class="body">
+        <div><span class="k"># Помощь с резюме</span></div>
+        <div class="c">## Инструкция</div>
+        <div>Помоги с резюме.</div>
+        <div>Будь профессионалом.</div>
+        <div>Сделай качественно и структурно.</div>
+        <div>Ответ дай красиво.</div>
+        <div>Учти все нюансы.</div>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="file frag" data-frag="1">
+        <div class="fh"><span class="dots"><i></i><i></i><i></i></span>рабочий корешок</div>
+        <div class="body">
+          <div><span class="k"># Скрининг резюме</span></div>
+          <div class="c">## Когда</div>
+          <div>Вакансия + резюме + просьба отобрать.</div>
+          <div class="c">## Выход</div>
+          <div>Таблица. Статусы только: звать / уточнить / не звать.</div>
+          <div class="c">## Правило цитаты</div>
+          <div>Нет фразы в тексте — нет факта. Пиши «не видно».</div>
+          <div class="c">## Стоп</div>
+          <div>Письмо кандидату не пиши. Это другой скилл.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">«Будь профессионалом» агент и так старается изобразить. Ему не хватает границ, а не прилагательных.</p>
+  <p class="notes">Щёлкните один раз — справа появится рабочая версия. Дайте залу секунду сравнить объём: рабочий текст не длиннее, он конкретнее.</p>
+</section>
+
+<!-- 17 -->
+<section class="divider" data-part="hr" data-label="Кадры">
+  <div class="div-num">02</div>
+  <p class="kicker r">Часть 02 <span class="pt">кадры</span></p>
+  <h2 class="title r" style="--i:1">Подбор</h2>
+  <p class="lead r" style="--i:2">Три повторяемые задачи. У каждой свой скилл, общий стол и человек, который решает, кого зовут на самом деле.</p>
+  <div class="chips r" style="--i:3"><span>Скрининг резюме</span><span>Приглашение на интервью</span><span>Таблица кандидатов</span></div>
+  <p class="notes">Скажите, что имена дальше вымышленные и в рабочих файлах телефонам и паспортам не место. Это мост к безопасности, но без лекции про закон.</p>
+</section>
+
+<!-- 18 -->
+<section data-part="hr" data-label="Скрининг: до и после">
+  <p class="kicker r">Кадры <span class="pt">скрининг</span></p>
+  <h2 class="title r" style="--i:1">«Посмотри резюме» и отбор по требованиям — разная работа</h2>
+  <div class="mid grid2">
+    <article class="card bad r" style="--i:2">
+      <div class="tag bad">Без скилла</div>
+      <h3>Вежливое эссе</h3>
+      <p>Агент пишет, что Смирнова «производит впечатление сильного кандидата», приписывает уверенное владение 1С, хотя в тексте резюме программы нет, и сам предлагает позвонить.</p>
+      <p style="margin-top:12px">Проверить нечего: нет цитат, нет статуса, нет списка требований.</p>
+    </article>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="tag good">Со скиллом</div>
+        <h3>Строка, которую можно оспорить</h3>
+        <table class="grid">
+          <thead><tr><th>Кто</th><th>Первичка</th><th>1С</th><th>Итог</th></tr></thead>
+          <tbody>
+            <tr><td>А. Смирнова</td><td>есть, 4 года</td><td>есть</td><td><span class="st go">звать</span></td></tr>
+            <tr><td>И. Волков</td><td>1 год</td><td>не видно</td><td><span class="st ask">уточнить</span></td></tr>
+            <tr><td>О. Ким</td><td>нет</td><td>нет</td><td><span class="st stop">не звать</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px">Имена вымышленные. «Не видно» — не вежливое «нет».</p>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Щелчок показывает таблицу. Проговорите Волкова: молчание про 1С не равно «не умеет».</p>
+</section>
+
+<!-- 19 -->
+<section data-part="hr" data-label="Внутри скилла">
+  <p class="kicker r">Кадры <span class="pt">что лежит в папке</span></p>
+  <h2 class="title r" style="--i:1">Кусок, который меняет ответ</h2>
+  <div class="mid grid2">
+    <div class="file scan r" style="--i:2">
+      <div class="fh"><span class="dots"><i></i><i></i><i></i></span>скрининг-резюме/SKILL.md</div>
+      <div class="body">
+        <div class="c">## Когда применять</div>
+        <div>Есть требования вакансии и резюме.</div>
+        <div>Просьба: отобрать или сравнить.</div>
+        <div class="c">## Шаги</div>
+        <div>1. Обязательные требования — списком.</div>
+        <div>2. Статус «есть» только с цитатой.</div>
+        <div>3. Нет цитаты → «не видно» → уточнить,</div>
+        <div>   если это не объявленный стоп-фактор.</div>
+        <div class="c">## Не делать</div>
+        <div class="no">✗ характер, «сильное впечатление», звонок</div>
+        <div class="no">✗ телефон и почта в таблице</div>
+      </div>
+    </div>
+    <div class="stack">
+      <article class="card r" style="--i:3"><h3>Вакансия задаёт линейку</h3><p>Без неё скилл останавливается и просит требования, а не сочиняет «типичного бухгалтера».</p></article>
+      <article class="card r" style="--i:4"><h3>Стоп-фактор объявлен заранее</h3><p>Только тогда молчание в резюме можно читать как «не звать». Это пишет человек в требованиях, не агент по дороге.</p></article>
+      <article class="card r" style="--i:5"><h3>Письмо — другая папка</h3><p>Скрининг не зовёт на интервью. Иначе в одной задаче смешаются оценка и обещание кандидату.</p></article>
+    </div>
+  </div>
+  <p class="notes">Оговорка на заголовке: «кусок», не весь файл. Полный текст — в скачиваемом шаблоне.</p>
+</section>
+
+<!-- 20 -->
+<section data-part="hr" data-label="Диалог скрининга">
+  <p class="kicker r">Кадры <span class="pt">как это звучит</span></p>
+  <h2 class="title r" style="--i:1">В чат уходит задача. Регламент агент открывает сам</h2>
+  <div class="mid grid2">
+    <div class="chat">
+      <div class="msg user r" style="--i:2">
+        <div class="who">Вы</div>
+        <p class="typer">Три резюме на вакансию «бухгалтер по первичной документации». Требования во вложении. Кого звать?</p>
+      </div>
+      <div class="msg agent r" style="--i:3">
+        <div class="who">Агент</div>
+        <p class="typer" data-delay="1.6">Открыл скилл «Скрининг резюме». Обязательное отмечу только если оно прямо есть в резюме. Где тишина — поставлю «не видно», не «нет».</p>
+      </div>
+    </div>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="who-line">Черновик для рекрутера · люди вымышленные</div>
+        <table class="grid">
+          <thead><tr><th></th><th>А. Смирнова</th><th>И. Волков</th><th>О. Ким</th></tr></thead>
+          <tbody>
+            <tr><td>Первичка</td><td>4 года</td><td>1 год</td><td>нет</td></tr>
+            <tr><td>1С</td><td>есть</td><td>не видно</td><td>нет</td></tr>
+            <tr><td>Итог</td><td><span class="st go">звать</span></td><td><span class="st ask">уточнить</span></td><td><span class="st stop">не звать</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px">Волкову вопрос: какой учётной программой пользовались? Ким — стоп-фактор по первичке.</p>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Дайте тексту допечататься, потом щёлкните таблицу. Подчеркните: агент назвал скилл, который открыл. Это хороший признак, его можно просить прямо.</p>
+</section>
+
+<!-- 21 -->
+<section data-part="hr" data-label="Приглашение">
+  <p class="kicker r">Кадры <span class="pt">приглашение</span></p>
+  <h2 class="title r" style="--i:1">Письмо кандидату собирается из бланка, не из вдохновения</h2>
+  <div class="mid grid2">
+    <article class="card bad r" style="--i:2">
+      <div class="tag bad">Без бланка</div>
+      <p>«Здравствуйте, Анна! Вы нам очень понравились, готовы обсудить доход выше рынка и выйти уже в понедельник. Ждём вас завтра в 10, адрес вышлем.»</p>
+      <p style="margin-top:12px">Тут обещание денег, выдуманный восторг и дата, которой не было во входе.</p>
+    </article>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="tag good">Поля бланка</div>
+        <p><strong>Кому:</strong> имя, как в резюме. Без оценки «вы сильнейший».</p>
+        <p><strong>Повод:</strong> интервью на роль, название роли копировать из вакансии.</p>
+        <p><strong>Когда и где:</strong> только то, что дал человек. Нет слота — оставить «уточним время».</p>
+        <p><strong>Что взять:</strong> из списка в скилле, не выдумывать справки.</p>
+        <p><strong>Не писать:</strong> зарплату, «вы приняты», сравнение с другими.</p>
+      </article>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">Отправку письма скилл не делает. Он готовит текст, вы читаете его вслух или глазами и только потом отправляете сами.</p>
+  <p class="notes">Это отдельный скилл от скрининга. Хороший момент сказать: исходящее наружу — всегда стоп перед человеком.</p>
+</section>
+
+<!-- 22 -->
+<section data-part="hr" data-label="Таблица кандидатов">
+  <p class="kicker r">Кадры <span class="pt">сравнение</span></p>
+  <h2 class="title r" style="--i:1">Сравнивают после того, как каждого уже разложили</h2>
+  <div class="mid">
+    <article class="paper r" style="--i:2">
+      <table class="grid">
+        <thead>
+          <tr><th>Критерий</th><th>А. Смирнова</th><th>И. Волков</th><th>О. Ким</th></tr>
+        </thead>
+        <tbody>
+          <tr class="r" style="--i:3"><td>Первичка от 2 лет</td><td>да · 4 года</td><td>ниже порога</td><td>нет</td></tr>
+          <tr class="r" style="--i:4"><td>1С</td><td>да</td><td>не видно</td><td>нет</td></tr>
+          <tr class="r" style="--i:5"><td>Сверка с контрагентами</td><td>желательное, есть</td><td>не видно</td><td>нет</td></tr>
+          <tr class="r" style="--i:6"><td>Решение для человека</td><td><span class="st go">в первую очередь</span></td><td><span class="st ask">один вопрос</span></td><td><span class="st stop">не тратить слот</span></td></tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
+  <p class="note r" style="--i:7">В скилле сравнения запрещено писать «лучше как человек». Только критерий, который уже был в вакансии. Желательное не побеждает обязательное.</p>
+  <p class="notes">Строки появляются по очереди. Итог: сравнение не заменяет скрининг, оно стоит вторым шагом.</p>
+</section>
+
+<!-- 23 -->
+<section data-part="hr" data-label="Шаблоны для кадров">
+  <p class="kicker r">Кадры <span class="pt">забрать</span></p>
+  <h2 class="title r" style="--i:1">Три папки можно скачать и переименовать под себя</h2>
+  <div class="mid grid3">
+    <a class="dl r" style="--i:2" href="templates/hr-screening.md" download target="_blank" rel="noopener"><b>Скрининг резюме</b><span>Цитата, статус, стоп-фактор. Без характеров и телефонов.</span><em>скачать .md</em></a>
+    <a class="dl r" style="--i:3" href="templates/hr-interview-invite.md" download target="_blank" rel="noopener"><b>Приглашение</b><span>Бланк письма: что заполнить и чего не обещать.</span><em>скачать .md</em></a>
+    <a class="dl r" style="--i:4" href="templates/hr-compare.md" download target="_blank" rel="noopener"><b>Таблица кандидатов</b><span>Сравнение только по уже названным критериям.</span><em>скачать .md</em></a>
+  </div>
+  <p class="note r" style="--i:5">Файлы — черновики общей формы. Подставьте свои поля. Живые персональные данные в сам файл скилла не кладите.</p>
+  <p class="notes">Клик по карточке скачивает файл и не листает слайд. Можно сказать: откроете после лекции, сейчас идём в документы.</p>
+</section>
+
+<!-- 24 -->
+<section class="divider" data-part="docs" data-label="Документы">
+  <div class="div-num">03</div>
+  <p class="kicker r">Часть 03 <span class="pt">документы</span></p>
+  <h2 class="title r" style="--i:1">Внутренние бумаги</h2>
+  <p class="lead r" style="--i:2">Служебная записка, приказ по бланку, поиск нормы в регламенте и сверка договора. Агент собирает черновик. Подпись и номер остаются у человека.</p>
+  <div class="chips r" style="--i:3"><span>Служебка</span><span>Приказ</span><span>Регламент</span><span>Договор</span></div>
+  <p class="notes">Подчеркните: номер, дата регистрации и подпись не поля для агента. Он оставляет в них пропуск.</p>
+</section>
+
+<!-- 25 -->
+<section data-part="docs" data-label="Служебная записка">
+  <p class="kicker r">Документы <span class="pt">служебка</span></p>
+  <h2 class="title r" style="--i:1">Записка — это поля, а не «напиши красиво»</h2>
+  <div class="mid grid2">
+    <article class="card bad r" style="--i:2">
+      <div class="tag bad">Без шаблона</div>
+      <p>Сплошной абзац: «хотелось бы отметить, что в связи с производственной необходимостью просим рассмотреть возможность…». Нет адресата, нет просьбы одним предложением, нет срока.</p>
+    </article>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="who-line">Служебная записка · черновик</div>
+        <p><strong>Кому / от кого:</strong> роль, не выдуманное имя, если его не дали.</p>
+        <p><strong>Тема:</strong> одно предложение без «касательно вопроса».</p>
+        <p><strong>Суть:</strong> что случилось, два-три факта из ваших вводных.</p>
+        <p><strong>Просьба:</strong> что решить и к какой дате. Даты нет во входе — напиши «срок не задан».</p>
+        <p><strong>Приложения:</strong> только то, что человек перечислил.</p>
+      </article>
+    </div>
+  </div>
+  <p class="note r" style="--i:3">Скилл не знает вашего бланка наизусть. Поля бланка лежат в папке. Нет поля — агент не добавляет «как обычно бывает».</p>
+  <p class="notes">Щелчок — чистая записка. Скажите: канцелярит в левой карточке агент воспроизводит отлично, пользы от этого мало.</p>
+</section>
+
+<!-- 26 -->
+<section data-part="docs" data-label="Приказ по шаблону">
+  <p class="kicker r">Документы <span class="pt">приказ</span></p>
+  <h2 class="title r" style="--i:1">Приказ заполняют по бланку. Пустые графы — тоже результат</h2>
+  <div class="mid grid2">
+    <article class="paper r" style="--i:2">
+      <div class="who-line">Приказ · поля, которые закрывает агент</div>
+      <h3>О чём</h3>
+      <p>Заголовок из вашей фразы, без юридического творчества.</p>
+      <h3 style="margin-top:10px">Основание</h3>
+      <p>Только документ, который вы назвали: служебка, план, письмо. Нет основания — строка «не указано, нужен человек».</p>
+      <h3 style="margin-top:10px">Пункты</h3>
+      <p>Кто, что делает, к какому сроку. Один пункт — одно поручение.</p>
+    </article>
+    <div class="stack">
+      <article class="card warn r" style="--i:3">
+        <div class="tag warn">Оставляет человек</div>
+        <h3>Номер, дата, подпись</h3>
+        <p>В бланке эти графы стоят пустыми специально. Агент не присваивает номер и не ставит «согласовано».</p>
+      </article>
+      <article class="card r" style="--i:4">
+        <div class="tag">Стоп</div>
+        <h3>Если поручение меняет права людей</h3>
+        <p>Отпуск, дисциплина, деньги, доступ. Скилл помечает черновик: «не выпускать без профильного сотрудника». Он не решает, можно ли так приказывать.</p>
+      </article>
+      <article class="card r" style="--i:5">
+        <h3>Чего нет во входе</h3>
+        <p>Не дописывать «типовые» пункты про ответственность и контроль, если их не было в вашем бланке.</p>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Не изображайте настоящий приказ компании. Это учебный каркас полей. Стоп про права людей произнесите медленно.</p>
+</section>
+
+<!-- 27 -->
+<section data-part="docs" data-label="Поиск по регламенту">
+  <p class="kicker r">Документы <span class="pt">регламент</span></p>
+  <h2 class="title r" style="--i:1">Искать норму — значит показать, откуда она взялась</h2>
+  <div class="mid grid2">
+    <div class="chat">
+      <div class="msg user r" style="--i:2">
+        <div class="who">Вы</div>
+        <p class="typer">Можно ли перенести неиспользованные дни отпуска на следующий год? Ищи только в приложенном регламенте.</p>
+      </div>
+      <div class="msg agent r" style="--i:3">
+        <div class="who">Агент</div>
+        <p class="typer" data-delay="1.5">Открыл скилл «Поиск по регламенту». В разделе 4.2 есть фраза про перенос по согласованию с руководителем. Других мест в этом файле нет. Достраивать не буду.</p>
+      </div>
+    </div>
+    <div class="slot">
+      <div class="stack frag" data-frag="1">
+        <article class="card"><div class="ico">Как отвечать</div><h3>Цитата и адрес</h3><p>Пункт или заголовок и короткий пересказ рядом.</p></article>
+        <article class="card"><div class="ico">Если пусто</div><h3>«В этом файле нет»</h3><p>Честный пустой ответ полезнее абзаца из общих знаний.</p></article>
+        <article class="card"><div class="ico">Граница</div><h3>Не быть юристом компании</h3><p>Скилл ищет в файлах, которые вы положили, и не объявляет норму на всю организацию.</p></article>
+      </div>
+    </div>
+  </div>
+  <p class="notes">Пример про отпуск — бытовой, не ссылка на ваш внутренний документ. Щелчок показывает три правила ответа. Главное слово: «в этом файле нет».</p>
+</section>
+
+<!-- 28 -->
+<section data-part="docs" data-label="Сверка договора">
+  <p class="kicker r">Документы <span class="pt">договор</span></p>
+  <h2 class="title r" style="--i:1">Сверка — это список расхождений, не заключение «можно подписывать»</h2>
+  <div class="mid">
+    <article class="paper r" style="--i:2">
+      <table class="grid">
+        <thead><tr><th>Поле</th><th>Наш черновик</th><th>Версия контрагента</th><th>Что сделать</th></tr></thead>
+        <tbody>
+          <tr class="r" style="--i:3"><td>Сумма</td><td>1 200 000</td><td>1 200 000</td><td><span class="st go">совпало</span></td></tr>
+          <tr class="r" style="--i:4"><td>Срок</td><td>до 1 марта</td><td>до 15 марта</td><td><span class="st ask">спросить человека</span></td></tr>
+          <tr class="r" style="--i:5"><td>Продление</td><td>только новым соглашением</td><td>само на год</td><td><span class="st stop">не пропускать молча</span></td></tr>
+          <tr class="r" style="--i:6"><td>Пени</td><td>есть пункт</td><td>пункта нет</td><td><span class="st ask">показать юристу</span></td></tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
+  <p class="note r" style="--i:7">Цифры учебные. Список полей — в скилле: стороны, предмет, сумма, срок, продление, ответственность, персональные данные. Нет поля в одном из файлов — пиши «нет в тексте», не «наверное стандарт».</p>
+  <p class="notes">Скажите прямо: это не юридическое заключение. Скилл готовит сверку, решение о подписи принимает человек с нужной ролью.</p>
+</section>
+
+<!-- 29 -->
+<section data-part="docs" data-label="Шаблоны для документов">
+  <p class="kicker r">Документы <span class="pt">забрать</span></p>
+  <h2 class="title r" style="--i:1">Четыре папки для бумаг, которые вы и так делаете каждую неделю</h2>
+  <div class="mid grid4">
+    <a class="dl r" style="--i:2" href="templates/doc-memo.md" download target="_blank" rel="noopener"><b>Служебная записка</b><span>Кому, суть, просьба, срок, приложения.</span><em>скачать .md</em></a>
+    <a class="dl r" style="--i:3" href="templates/doc-order.md" download target="_blank" rel="noopener"><b>Приказ по бланку</b><span>Пункты поручений. Номер и подпись пустые.</span><em>скачать .md</em></a>
+    <a class="dl r" style="--i:4" href="templates/doc-reglament.md" download target="_blank" rel="noopener"><b>Поиск по регламенту</b><span>Цитата, адрес пункта или честное «нет в файле».</span><em>скачать .md</em></a>
+    <a class="dl r" style="--i:5" href="templates/doc-contract.md" download target="_blank" rel="noopener"><b>Сверка договора</b><span>Таблица расхождений, без совета «подписывайте».</span><em>скачать .md</em></a>
+  </div>
+  <p class="notes">Не открывайте файлы сейчас. Назовите четыре задачи и идите в деньги.</p>
+</section>
+
+<!-- 30 -->
+<section class="divider" data-part="money" data-label="Финансы">
+  <div class="div-num">04</div>
+  <p class="kicker r">Часть 04 <span class="pt">финансы</span></p>
+  <h2 class="title r" style="--i:1">Бухгалтерия и деньги</h2>
+  <p class="lead r" style="--i:2">Сверять, раскладывать, ловить пропуск. Не проводить платёж и не «принимать к учёту»: это решение человека.</p>
+  <div class="chips r" style="--i:3"><span>Акты</span><span>Счета</span><span>Авансовый отчёт</span><span>Первичка</span><span>Сводка расходов</span></div>
+  <p class="notes">Тон: агент — второй взгляд на таблицу, не подпись главбуха. Суммы на слайдах круглые и вымышленные.</p>
+</section>
+
+<!-- 31 -->
+<section data-part="money" data-label="Сверка актов">
+  <p class="kicker r">Финансы <span class="pt">акты</span></p>
+  <h2 class="title r" style="--i:1">Акт сверки начинают с пар, а не с ощущения «вроде сходится»</h2>
+  <div class="mid grid2">
+    <article class="card bad r" style="--i:2">
+      <div class="tag bad">Без скилла</div>
+      <h3>«В целом расхождений нет»</h3>
+      <p>Агент сложил итоги глазами, не заметил документ, который есть только у контрагента, и округлил копейки. Спорить с таким ответом нечем.</p>
+    </article>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="tag good">Пара к паре</div>
+        <table class="grid">
+          <thead><tr><th>Документ</th><th>У нас</th><th>У них</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Акт 14</td><td>80 000</td><td>80 000</td><td><span class="st go">пара</span></td></tr>
+            <tr><td>Акт 15</td><td>45 000</td><td>—</td><td><span class="st ask">только у нас</span></td></tr>
+            <tr><td>Акт 16</td><td>—</td><td>12 400</td><td><span class="st stop">только у них</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px">Итог не подменяется фразой «примерно равно». Разница показана строкой.</p>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Щелчок. Формула слайда: номер, сумма, сторона, где документа нет. НДС — отдельная колонка в шаблоне, здесь её спрятали, чтобы слайд читался.</p>
+</section>
+
+<!-- 32 -->
+<section data-part="money" data-label="Разбор счёта">
+  <p class="kicker r">Финансы <span class="pt">счёт</span></p>
+  <h2 class="title r" style="--i:1">Счёт проверяют арифметикой и дублем, не интуицией</h2>
+  <div class="mid grid2">
+    <article class="paper r" style="--i:2">
+      <div class="who-line">Счёт 77 · учебные цифры</div>
+      <table class="grid">
+        <tbody>
+          <tr><td>Строка 1 · работы</td><td>100 000</td></tr>
+          <tr><td>Строка 2 · доставка</td><td>20 000</td></tr>
+          <tr><td>Сумма строк</td><td>120 000</td></tr>
+          <tr><td>Написано «итого»</td><td>132 000</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px"><span class="stamp">не сходится</span></p>
+    </article>
+    <div class="stack">
+      <article class="card r" style="--i:3"><h3>Строки равны итогу</h3><p>Если нет — скилл останавливается на этом и не «поправляет» сумму сам.</p></article>
+      <article class="card r" style="--i:4"><h3>Ставка и сумма налога</h3><p>Считает от базы, которую видит. Не подставляет «обычные 20%», если на счёте написано иначе. Расхождение помечает.</p></article>
+      <article class="card r" style="--i:5"><h3>Дубль номера</h3><p>Если в пачке уже был счёт с тем же номером и поставщиком — это отдельная строка «возможный повтор», не молчание.</p></article>
+    </div>
+  </div>
+  <p class="notes">Печать «не сходится» появляется сама. Не учите считать НДС на слайде: принцип — не подменять то, что написано в документе.</p>
+</section>
+
+<!-- 33 -->
+<section data-part="money" data-label="Авансовый отчёт">
+  <p class="kicker r">Финансы <span class="pt">аванс</span></p>
+  <h2 class="title r" style="--i:1">Авансовый отчёт — это список дыр, не оправдание поездки</h2>
+  <div class="mid grid2">
+    <div class="chat">
+      <div class="msg user r" style="--i:2">
+        <div class="who">Вы</div>
+        <p class="typer">Командировка 10–12 марта. Аванс 15 000. Чеки: поезд 6 400, гостиница 7 200. Суточные по нашей памятке — 700 в день.</p>
+      </div>
+      <div class="msg agent r" style="--i:3">
+        <div class="who">Агент</div>
+        <p class="typer" data-delay="1.7">Открыл скилл «Авансовый отчёт». Чеки внутри дат. Суточные: 3 дня × 700 = 2 100, если считать день выезда и день приезда. Это допущение — подтвердите. Чека на проезд обратно нет.</p>
+      </div>
+    </div>
+    <div class="slot">
+      <article class="paper frag" data-frag="1">
+        <div class="who-line">Что не закрыто</div>
+        <ul class="clean">
+          <li>Нет чека обратной дороги</li>
+          <li>Суточные посчитаны по памятке, которую вы назвали, не «как обычно»</li>
+          <li>Аванс 15 000, чеки и суточные 15 700 — перерасход 700, не прятать в округление</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+  <p class="notes">Агент озвучил допущение про число дней. Это образец: сомнение наружу, а не тихое решение. Щелчок — список дыр.</p>
+</section>
+
+<!-- 34 -->
+<section data-part="money" data-label="Первичка и сводка">
+  <p class="kicker r">Финансы <span class="pt">первичка и сводка</span></p>
+  <h2 class="title r" style="--i:1">Сначала полнота документа. Потом картина расходов</h2>
+  <div class="mid grid2">
+    <article class="card r" style="--i:2">
+      <div class="tag">Проверка первички</div>
+      <h3>Поля, без которых рано нести дальше</h3>
+      <ul class="clean">
+        <li>Название документа, дата, номер</li>
+        <li>Кто и кому, оба названия как в тексте</li>
+        <li>Что поставлено и на какую сумму</li>
+        <li>Подписи и должности — есть или «в скане не видно»</li>
+      </ul>
+    </article>
+    <article class="card r" style="--i:3">
+      <div class="tag">Сводка</div>
+      <h3>Учебный месяц, тысячи</h3>
+      <div class="bars">
+        <div class="bar" style="--i:1"><span>Командировки</span><i style="--w:78%"></i><b>780</b></div>
+        <div class="bar" style="--i:2"><span>Канцелярия</span><i style="--w:22%"></i><b>220</b></div>
+        <div class="bar" style="--i:3"><span>Связь</span><i style="--w:14%"></i><b>140</b></div>
+        <div class="bar" style="--i:4"><span>Прочее</span><i style="--w:46%"></i><b>460</b></div>
+      </div>
+      <p style="margin-top:12px">Скилл помечает статью, которая выросла сильно к прошлому файлу, и не придумывает причину. Причину пишете вы.</p>
+    </article>
+  </div>
+  <p class="note r" style="--i:4">«В скане не видно» — честнее, чем дорисованная подпись. Сводка группирует только те строки, которые вы уже отнесли к статье, либо спрашивает, куда класть.</p>
+  <p class="notes">Две папки, один слайд. Слева — полнота, справа — картина. Не смешивать: дырявый документ не должен молча попасть в красивый график.</p>
+</section>
+
+<!-- 35 -->
+<section data-part="money" data-label="Шаблоны для финансов">
+  <p class="kicker r">Финансы <span class="pt">забрать</span></p>
+  <h2 class="title r" style="--i:1">Пять папок. Ни одна не проводит платёж</h2>
+  <div class="mid grid5">
+    <a class="dl r" style="--i:1" href="templates/fin-acts.md" download target="_blank" rel="noopener"><b>Сверка актов</b><span>Пары документов и строки без пары.</span><em>скачать</em></a>
+    <a class="dl r" style="--i:2" href="templates/fin-invoice.md" download target="_blank" rel="noopener"><b>Разбор счёта</b><span>Итог, налог, повтор номера.</span><em>скачать</em></a>
+    <a class="dl r" style="--i:3" href="templates/fin-advance.md" download target="_blank" rel="noopener"><b>Авансовый отчёт</b><span>Даты, чеки, дыры, допущения.</span><em>скачать</em></a>
+    <a class="dl r" style="--i:4" href="templates/fin-primary.md" download target="_blank" rel="noopener"><b>Первичка</b><span>Обязательные поля и «не видно».</span><em>скачать</em></a>
+    <a class="dl r" style="--i:5" href="templates/fin-expenses.md" download target="_blank" rel="noopener"><b>Сводка расходов</b><span>Статьи и выбросы без выдуманных причин.</span><em>скачать</em></a>
+  </div>
+  <p class="notes">Коротко. Следующий блок — как собрать такую папку самим, это важнее каталога.</p>
+</section>
+
+<!-- 36 -->
+<section class="divider" data-part="craft" data-label="Свой скилл">
+  <div class="div-num">05</div>
+  <p class="kicker r">Часть 05 <span class="pt">свой скилл</span></p>
+  <h2 class="title r" style="--i:1">Как собрать свою папку</h2>
+  <p class="lead r" style="--i:2">Не с чистого листа «про всё». С одной задачи, которую вы на этой неделе делали уже второй раз.</p>
+  <div class="chips r" style="--i:3"><span>Семь шагов</span><span>Ошибки</span><span>Проверка</span><span>Данные</span><span>Чек-лист</span></div>
+  <p class="notes">Попросите зал мысленно выбрать одну свою повторную задачу. Дальше семь шагов идут по ней, не абстрактно.</p>
+</section>
+
+<!-- 37 -->
+<section data-part="craft" data-label="Семь шагов">
+  <p class="kicker r">Свой скилл <span class="pt">сборка</span></p>
+  <h2 class="title r" style="--i:1">Семь шагов. Каждый помещается в один абзац</h2>
+  <div class="steps7 mid">
+    <article class="r" style="--i:1"><b>1</b><span>Одна задача</span><small>Как она называется, когда вы просите коллегу «сделай как в тот раз».</small></article>
+    <article class="r" style="--i:2"><b>2</b><span>Корешок</span><small>По каким словам агент поймёт, что открывать именно эту папку.</small></article>
+    <article class="r" style="--i:3"><b>3</b><span>Шаги стажёру</span><small>Порядок, который нельзя перескакивать. Без «будь внимателен».</small></article>
+    <article class="r" style="--i:4"><b>4</b><span>Форма и пример</span><small>Пустой бланк и один заполненный случай, можно вымышленный.</small></article>
+    <article class="r" style="--i:5"><b>5</b><span>Вход и выход</span><small>Что должно лежать на столе и какой файл считается готовым.</small></article>
+    <article class="r" style="--i:6"><b>6</b><span>Стоп-линии</span><small>Чего не делать и в какой момент звать человека.</small></article>
+    <article class="r" style="--i:7"><b>7</b><span>Два прогона</span><small>Одна удачная задача и одна кривая. Поправьте файл, не память.</small></article>
+  </div>
+  <p class="notes">Карточки подсвечиваются по кругу. Идите по номерам. Шаг 7 — мост к слайду про проверку.</p>
+</section>
+
+<!-- 38 -->
+<section data-part="craft" data-label="Типичные ошибки">
+  <p class="kicker r">Свой скилл <span class="pt">поломки</span></p>
+  <h2 class="title r" style="--i:1">Шесть способов сделать папку, которую агент не сможет применить</h2>
+  <div class="mid grid3">
+    <article class="card bad shake r" style="--i:1"><h3>Корешок «разное»</h3><p>Нет момента, когда папку открывать. Она либо мешает всем задачам, либо пылится.</p></article>
+    <article class="card bad shake r" style="--i:2"><h3>Простыня без шагов</h3><p>Три страницы принципов. Агент вежливо кивает и делает по-своему.</p></article>
+    <article class="card bad shake r" style="--i:3"><h3>Нет примера</h3><p>Определение «качественная записка» каждый раз разное. Пример фиксирует вкус.</p></article>
+    <article class="card bad shake r" style="--i:4"><h3>Нет запретов</h3><p>Дыру агент заполняет правдоподобной выдумкой. Запрет дешевле, чем потом ловить её.</p></article>
+    <article class="card bad shake r" style="--i:5"><h3>Пять задач в одном файле</h3><p>Скрининг, отказ и оффер вперемешку. Разнесите по папкам, даже если папки тонкие.</p></article>
+    <article class="card bad shake r" style="--i:6"><h3>Живые данные внутри</h3><p>Настоящие люди, суммы договоров и пароли не должны лежать в примере «навсегда».</p></article>
+  </div>
+  <p class="notes">Не читайте все шесть. Выберите две, которые услышите в зале чаще: «разное» и отсутствие запрета.</p>
+</section>
+
+<!-- 39 -->
+<section data-part="craft" data-label="Проверка и улучшение">
+  <p class="kicker r">Свой скилл <span class="pt">проверка</span></p>
+  <h2 class="title r" style="--i:1">Скилл готов не когда он красивый, а когда повтор стабилен</h2>
+  <div class="mid grid5">
+    <article class="card r" style="--i:1"><div class="ico">1</div><h3>Один настоящий кусок</h3><p>Возьмите реальную задачу и уберите из неё лишние данные. Об этом — следующий слайд.</p></article>
+    <article class="card r" style="--i:2"><div class="ico">2</div><h3>Два ответа рядом</h3><p>Прогон без папки и с папкой. Смотрите не «кто умнее», а где появилась форма.</p></article>
+    <article class="card r" style="--i:3"><div class="ico">3</div><h3>Три пометки</h3><p>Где выдумал. Где пропустил шаг. Где ушёл с бланка.</p></article>
+    <article class="card r" style="--i:4"><div class="ico">4</div><h3>Одна правка</h3><p>Один запрет или один пример за раз. Не переписывайте весь файл от досады.</p></article>
+    <article class="card r" style="--i:5"><div class="ico">5</div><h3>Ещё раз</h3><p>Тот же кривой случай. Пока он не стабилен, в названии файла честно стоит «черновик».</p></article>
+  </div>
+  <p class="note r" style="--i:6">Хороший признак: коллега, который задачу знает, может проверить ответ за пару минут, не распутывая эссе.</p>
+  <p class="notes">Цикл из пяти карточек. Акцент на «одна правка», иначе люди переписывают скилл целиком после каждой неудачи.</p>
+</section>
+
+<!-- 40 -->
+<section data-part="craft" data-label="Безопасность данных">
+  <p class="kicker r">Свой скилл <span class="pt">данные</span></p>
+  <h2 class="title r" style="--i:1">Сначала решите, что агенту вообще можно видеть</h2>
+  <p class="lead r" style="--i:1">Ниже общие ориентиры, не внутренний приказ. Если не знаете, разрешён ли конкретный сервис для таких данных, не отправляйте: спросите того, кто у вас за это отвечает.</p>
+  <div class="mid grid4">
+    <article class="card r" style="--i:2">
+      <div class="ico">Люди</div>
+      <h3>Персональные данные</h3>
+      <p>ФИО, телефон, паспорт, адрес, зарплата, кадровая переписка. В примерах на слайдах люди вымышленные. В работе обезличивайте: «кандидат А», без контактов, если задаче они не нужны.</p>
+    </article>
+    <article class="card r" style="--i:3">
+      <div class="ico">Дела</div>
+      <h3>Служебное и тайное</h3>
+      <p>Условия договоров, лимиты, незакрытые суммы, то, что не для внешней переписки. Часто хватает фрагмента: «срок и сумма», без названия контрагента.</p>
+    </article>
+    <article class="card r" style="--i:4">
+      <div class="ico">В самой папке</div>
+      <h3>Пример не должен жить вечно</h3>
+      <p>В скилл кладите учебный пример. Напишите строкой, какие поля вырезать до отправки: контакты, реквизиты, номера документов.</p>
+    </article>
+    <article class="card r" style="--i:5">
+      <div class="ico">Наружу</div>
+      <h3>Человек перед отправкой</h3>
+      <p>Письмо кандидату, приказ, платёж, ответ контрагенту. Скилл готовит черновик. Кнопку «отправить» нажимаете вы, когда черновик прочитан.</p>
+    </article>
+  </div>
+  <p class="notes">Не выдумывайте корпоративные правила и не цитируйте внутренние приказы. Фраза «если не уверены — не отправляйте и спросите» достаточна. Персональные данные назовите бытовым списком.</p>
+</section>
+
+<!-- 41 -->
+<section data-part="craft" data-label="Чек-лист">
+  <p class="kicker r">Свой скилл <span class="pt">перед тем как отдать команде</span></p>
+  <h2 class="title r" style="--i:1">Чек-лист. Если пункта нет — это ещё черновик</h2>
+  <div class="checks mid">
+    <div class="check r" style="--i:1"><i></i><span>В названии одна задача, её узнает коллега</span></div>
+    <div class="check r" style="--i:2"><i></i><span>Абзац «когда применять» не подходит ко всему подряд</span></div>
+    <div class="check r" style="--i:3"><i></i><span>Есть «когда не применять» и соседние папки не спорят</span></div>
+    <div class="check r" style="--i:4"><i></i><span>Шаги можно пройти пальцем, пропуск виден</span></div>
+    <div class="check r" style="--i:5"><i></i><span>Лежит пустой шаблон и один заполненный пример</span></div>
+    <div class="check r" style="--i:6"><i></i><span>Понятно, какой выход считается готовым</span></div>
+    <div class="check r" style="--i:7"><i></i><span>Написано, чего не выдумывать и где звать человека</span></div>
+    <div class="check r" style="--i:8"><i></i><span>В примерах нет живых людей, сумм и секретов</span></div>
+  </div>
+  <p class="note r" style="--i:9">Тот же список — файлом <strong>templates/checklist.md</strong> и на печатной шпаргалке.</p>
+  <p class="notes">Галочки рисуются сами. Можно зачитать три: когда применять, запрет на выдумку, чистота примера.</p>
+</section>
+
+<!-- 42 -->
+<section data-part="end" data-label="Что забрать">
+  <p class="kicker r">Итог <span class="pt">с собой</span></p>
+  <h2 class="title r" style="--i:1">Пять фраз, которые стоит унести без слайдов</h2>
+  <div class="mid stack">
+    <div class="why r" style="--i:1"><span class="n">01</span><div><strong>Скилл — должностная инструкция агента,</strong> а не особенно длинный промпт.</div></div>
+    <div class="why r" style="--i:2"><span class="n">02</span><div>В папке всегда есть <strong>когда, шаги, шаблон, пример и стоп-линия</strong>.</div></div>
+    <div class="why r" style="--i:3"><span class="n">03</span><div><strong>Одна задача — одна папка.</strong> Пять дел в одном файле разваливаются.</div></div>
+    <div class="why r" style="--i:4"><span class="n">04</span><div><strong>Сначала уберите лишние данные,</strong> потом отдавайте задачу. Сомневаетесь — спросите, не отправляйте.</div></div>
+    <div class="why r" style="--i:5"><span class="n">05</span><div><strong>Агент готовит, человек сдаёт.</strong> Письмо, приказ и платёж без вашей проверки не уходят.</div></div>
+  </div>
+  <p class="notes">Прочитайте пять фраз спокойно. Следующий слайд — единственная ссылка, которую просите открыть или сфотографировать.</p>
+</section>
+
+<!-- 43 -->
+<section data-part="end" data-label="Шпаргалка">
+  <p class="kicker r">Итог <span class="pt">раздатка</span></p>
+  <h2 class="title r" style="--i:1">Шпаргалка печатается. Шаблоны скачиваются</h2>
+  <div class="mid grid2">
+    <a class="dl r" style="--i:2; min-height:280px; justify-content:center" href="cheatsheet.html" target="_blank" rel="noopener">
+      <div class="ico">Открыть страницу</div>
+      <b style="font-size:36px">Шпаргалка</b>
+      <span>Каркас скилла, семь шагов, ошибки, данные и чек-лист, который удобно отправить на печать.</span>
+      <em>cheatsheet.html</em>
+    </a>
+    <div class="stack">
+      <article class="card r" style="--i:3">
+        <h3>Папка templates</h3>
+        <p>Кадры, документы, финансы, пустой каркас и чек-лист. Каждый файл — готовая форма SKILL-инструкции: когда, шаги, шаблон, пример, запреты.</p>
+      </article>
+      <article class="card r" style="--i:4">
+        <h3>Что сделать на этой неделе</h3>
+        <p>Выберите одну повторную задачу. Заполните каркас. Прогоните два раза. Покажите коллеге абзац «когда применять» — если узнаёт дело, корешок удался.</p>
+      </article>
+      <p class="r" style="--i:5; color: var(--muted-2); font-size: 18px; line-height: 1.4">Адрес этой лекции запомните по номеру слайда в ссылке. Шпаргалка — отдельная страница, её не унесёт пролистывание.</p>
+    </div>
+  </div>
+  <p class="notes">Откройте шпаргалку в новой вкладке и покажите кнопку печати. На этом можно заканчивать: вопросы лучше про их задачу, не про устройство моделей.</p>
+</section>
+</deck-stage>
+
+<div class="hud" id="hud">
+  <button type="button" class="nav" data-go="prev" aria-label="Предыдущий слайд">←</button>
+  <div class="hud-mid"><span id="part"></span><span id="count">1 / 1</span><span id="frag"></span></div>
+  <button type="button" class="nav" data-go="next" aria-label="Следующий слайд">→</button>
+  <button type="button" class="nav" data-go="help" aria-label="Клавиши">?</button>
+</div>
+
+<div class="help" id="help" hidden>
+  <h2>Как листать</h2>
+  <ul>
+    <li><kbd>→</kbd> <kbd>Пробел</kbd> <kbd>PgDn</kbd> — дальше. Если на слайде есть скрытый шаг, сначала откроется он.</li>
+    <li><kbd>←</kbd> <kbd>PgUp</kbd> — шаг назад, затем предыдущий слайд.</li>
+    <li>Клик по левому или правому краю, кнопки внизу, свайп в сторону.</li>
+    <li>Номер слайда в адресе: <kbd>#12</kbd>. Наберите число — прыжок на этот слайд.</li>
+    <li><kbd>Home</kbd> <kbd>End</kbd> <kbd>R</kbd> — в начало или в конец. <kbd>F</kbd> — на весь экран. <kbd>N</kbd> — заметки ведущего.</li>
+    <li>Раздатка и печать: <a href="cheatsheet.html">шпаргалка</a>, папка <a href="templates/checklist.md">templates</a>.</li>
+  </ul>
+</div>
+<div class="notes-panel" id="notes-panel" hidden></div>
+<p class="sr" id="live" aria-live="polite"></p>
+<script src="deck.js"></script>
+</body>
+</html>

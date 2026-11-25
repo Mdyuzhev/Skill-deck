@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Шпаргалка — скилл для ИИ-агента</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="fonts.css" />
+<style>
+  :root {
+    --purple: #7700ff;
+    --orange: #ff4f12;
+    --ink: #1c1230;
+    --muted: #5c516e;
+    --line: #eadff8;
+    --paper: #fff;
+    --bg: #f6f3fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Manrope, "Segoe UI", "Noto Sans", Arial, sans-serif;
+    line-height: 1.4;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 22px 64px; }
+  header.top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-end;
+    border-bottom: 4px solid var(--purple);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+  .brand { font-family: Unbounded, Manrope, sans-serif; font-size: 15px; letter-spacing: .04em; }
+  .brand i { display: inline-block; width: 10px; height: 10px; background: var(--orange); margin-right: 8px; border-radius: 2px; }
+  h1 { font-family: Unbounded, Manrope, sans-serif; font-size: 34px; line-height: 1.1; margin: 6px 0; letter-spacing: -0.03em; }
+  h2 { font-family: Unbounded, Manrope, sans-serif; font-size: 18px; margin: 22px 0 8px; letter-spacing: -0.02em; }
+  h2 span { color: var(--orange); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .12em; margin-right: 8px; }
+  p, li { font-size: 14.5px; }
+  .lead { font-size: 18px; max-width: 62ch; }
+  .muted { color: var(--muted); }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+  .bar a, button.print {
+    background: var(--purple);
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button.ghost { background: #fff; color: var(--purple); border: 1px solid var(--purple); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card, pre, .check {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .card { padding: 12px 14px; }
+  .card b { display: block; margin-bottom: 4px; }
+  .card p, .card li { margin: 0; color: var(--muted); }
+  pre {
+    padding: 12px 14px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    line-height: 1.45;
+    overflow: auto;
+    border-left: 4px solid var(--orange);
+  }
+  ol.steps { margin: 0; padding-left: 18px; }
+  ol.steps li { margin: 4px 0; }
+  .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+  label.check {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  label.check input { margin-top: 3px; accent-color: var(--purple); }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px; }
+  th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  a.file { color: var(--purple); font-weight: 700; }
+  .warn { background: #fff4ef; border: 1px solid #ffd0c2; border-radius: 12px; padding: 12px 14px; }
+  footer { margin-top: 22px; color: var(--muted); font-size: 12.5px; }
+  @media (max-width: 720px) {
+    .grid, .grid3, .checks { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: none; padding: 0; }
+    .noprint { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h2 { break-after: avoid; }
+    .card, pre, label.check, tr { break-inside: avoid; }
+    header.top { border-width: 3px; }
+  }
+  @page { size: A4; margin: 12mm; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand"><i></i>Ростелеком · бэк-офис</div>
+      <h1>Шпаргалка: скилл для агента</h1>
+      <p class="lead">Скилл — это папка с инструкцией. Агент открывает её, когда задача подходит, и работает по шагам, шаблону и примеру. Не по памяти о прошлом чате.</p>
+    </div>
+  </header>
+  <div class="bar noprint">
+    <button class="print" type="button" onclick="window.print()">Печать</button>
+    <a href="index.html#43">К слайдам</a>
+    <a class="ghost" href="templates/skeleton.md" download style="background:#fff;color:#7700ff;border:1px solid #7700ff">Скачать пустой каркас</a>
+  </div>
+
+  <h2><span>01</span>Шесть частей папки</h2>
+  <div class="grid3">
+    <article class="card"><b>Когда применять</b><p>Корешок. По нему агент выбирает папку. Если подходит ко всему, не работает.</p></article>
+    <article class="card"><b>Когда не надо</b><p>Соседние задачи и стоп: отправить, подписать, оплатить.</p></article>
+    <article class="card"><b>Шаги</b><p>Как стажёру в первый день. Пропуск пункта должен быть виден.</p></article>
+    <article class="card"><b>Шаблон</b><p>Пустая форма ответа: таблица, бланк, список полей.</p></article>
+    <article class="card"><b>Пример</b><p>Один заполненный случай. Учит сильнее, чем определение «качественно».</p></article>
+    <article class="card"><b>Стоп-линии</b><p>Чего не выдумывать и где звать человека.</p></article>
+  </div>
+
+  <h2><span>02</span>Каркас, который можно копировать</h2>
+  <pre># Одна задача
+## Когда применять
+## Когда не применять
+## Входы
+## Выход
+## Шаги
+1. …
+2. Нет факта в источнике — напиши «не видно». Не достраивай.
+## Шаблон
+## Пример
+## Не делать</pre>
+  <p class="muted">Файл часто называют SKILL.md. Агенту важнее поля, чем имя. Пустой файл: <a class="file" href="templates/skeleton.md" download>templates/skeleton.md</a>.</p>
+
+  <h2><span>03</span>Семь шагов сборки</h2>
+  <ol class="steps">
+    <li>Назовите одну повторяемую задачу.</li>
+    <li>Напишите, по каким словам её узнать.</li>
+    <li>Запишите шаги так, как объяснили бы стажёру.</li>
+    <li>Положите пустой шаблон и один пример.</li>
+    <li>Опишите вход и готовый выход.</li>
+    <li>Напишите запреты и место, где нужен человек.</li>
+    <li>Прогоните прямой случай и кривой. Поправьте файл одной правкой.</li>
+  </ol>
+
+  <h2><span>04</span>Как проверить</h2>
+  <div class="grid">
+    <article class="card"><b>Два ответа рядом</b><p>Без папки и с папкой. Смотрите, появилась ли форма, а не «кто умнее».</p></article>
+    <article class="card"><b>Три пометки</b><p>Где выдумал. Где пропустил шаг. Где ушёл с бланка.</p></article>
+    <article class="card"><b>Одна правка</b><p>Один запрет или один пример. Не переписывайте всё от досады.</p></article>
+    <article class="card"><b>Черновик</b><p>Пока кривой случай нестабилен, так и подпишите файл.</p></article>
+  </div>
+
+  <h2><span>05</span>Частые поломки</h2>
+  <div class="grid3">
+    <article class="card"><b>Корешок «разное»</b><p>Папку некогда открывать.</p></article>
+    <article class="card"><b>Простыня без шагов</b><p>Агент кивает и импровизирует.</p></article>
+    <article class="card"><b>Нет примера</b><p>Каждый ответ другого вкуса.</p></article>
+    <article class="card"><b>Нет запрета</b><p>Дыру заполняет правдоподобная выдумка.</p></article>
+    <article class="card"><b>Пять задач в одном</b><p>Разнесите по тонким папкам.</p></article>
+    <article class="card"><b>Живые данные в примере</b><p>Пример должен быть учебным.</p></article>
+  </div>
+
+  <h2><span>06</span>Данные</h2>
+  <div class="warn">
+    <p>Это общие ориентиры, не внутренний приказ. Если не знаете, можно ли нести такие данные в конкретный сервис, не несите: спросите того, кто у вас за это отвечает.</p>
+    <p>Персональные данные — имя вместе с телефоном, паспорт, адрес, зарплата, кадровая переписка. Обезличьте до «кандидат А», если контакты задаче не нужны.</p>
+    <p>Служебное — условия, лимиты, незакрытые суммы. Часто хватает фрагмента без названия контрагента.</p>
+    <p>Письмо наружу, приказ, платёж: агент готовит черновик, человек читает и только потом отправляет.</p>
+  </div>
+
+  <h2><span>07</span>Чек-лист перед тем как отдать команде</h2>
+  <div class="checks">
+    <label class="check"><input type="checkbox"> В названии одна задача</label>
+    <label class="check"><input type="checkbox"> «Когда применять» не про всё на свете</label>
+    <label class="check"><input type="checkbox"> Есть «когда не надо»</label>
+    <label class="check"><input type="checkbox"> Шаги можно пройти пальцем</label>
+    <label class="check"><input type="checkbox"> Есть пустой шаблон и пример</label>
+    <label class="check"><input type="checkbox"> Понятно, что считать готовым</label>
+    <label class="check"><input type="checkbox"> Написано, чего не выдумывать</label>
+    <label class="check"><input type="checkbox"> Есть место, где звать человека</label>
+    <label class="check"><input type="checkbox"> В примере нет живых секретов</label>
+    <label class="check"><input type="checkbox"> Два прогона уже сделаны</label>
+  </div>
+  <p class="muted">Тот же список файлом: <a class="file" href="templates/checklist.md" download>templates/checklist.md</a>.</p>
+
+  <h2><span>08</span>Готовые папки</h2>
+  <table>
+    <thead><tr><th>Полка</th><th>Задача</th><th>Файл</th></tr></thead>
+    <tbody>
+      <tr><td>Кадры</td><td>Скрининг резюме</td><td><a class="file" href="templates/hr-screening.md" download>hr-screening.md</a></td></tr>
+      <tr><td>Кадры</td><td>Приглашение на интервью</td><td><a class="file" href="templates/hr-interview-invite.md" download>hr-interview-invite.md</a></td></tr>
+      <tr><td>Кадры</td><td>Таблица кандидатов</td><td><a class="file" href="templates/hr-compare.md" download>hr-compare.md</a></td></tr>
+      <tr><td>Документы</td><td>Служебная записка</td><td><a class="file" href="templates/doc-memo.md" download>doc-memo.md</a></td></tr>
+      <tr><td>Документы</td><td>Приказ по бланку</td><td><a class="file" href="templates/doc-order.md" download>doc-order.md</a></td></tr>
+      <tr><td>Документы</td><td>Поиск по регламенту</td><td><a class="file" href="templates/doc-reglament.md" download>doc-reglament.md</a></td></tr>
+      <tr><td>Документы</td><td>Сверка договора</td><td><a class="file" href="templates/doc-contract.md" download>doc-contract.md</a></td></tr>
+      <tr><td>Финансы</td><td>Сверка актов</td><td><a class="file" href="templates/fin-acts.md" download>fin-acts.md</a></td></tr>
+      <tr><td>Финансы</td><td>Разбор счёта</td><td><a class="file" href="templates/fin-invoice.md" download>fin-invoice.md</a></td></tr>
+      <tr><td>Финансы</td><td>Авансовый отчёт</td><td><a class="file" href="templates/fin-advance.md" download>fin-advance.md</a></td></tr>
+      <tr><td>Финансы</td><td>Проверка первички</td><td><a class="file" href="templates/fin-primary.md" download>fin-primary.md</a></td></tr>
+      <tr><td>Финансы</td><td>Сводка расходов</td><td><a class="file" href="templates/fin-expenses.md" download>fin-expenses.md</a></td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>Агент готовит, человек сдаёт. Одна задача — одна папка. Промпт — это поручение на сейчас, скилл — регламент, который лежит на полке.</p>
+    <p>Лекция: <a href="index.html">index.html</a>. Номер слайда — в адресе, например index.html#7.</p>
+  </footer>
+</div>
+</body>
+</html>
